@@ -60,12 +60,19 @@ certificates](https://en.wikipedia.org/wiki/Thawte) back in the day. Over the
 years, they have come down in price, but even now, if you want to get a
 [Wildcard certificate](https://en.wikipedia.org/wiki/Wildcard_certificate)
 (so that it covers arbitrary subdomains), you're looking at anywhere from
-[$85](https://www.ssls.com/domain-type/wildcard-ssl-certificates) USD to $500+.
+[$85](https://www.ssls.com/domain-type/wildcard-ssl-certificates) USD to $500+
+per year.
 
 Fortunately, there's also [LetsEncrypt.org](https://letsencrypt.org/).
 LetsEncrypt is a remarkable service -- a legit Certificate Authority (CA) that
 gives you SSL certificates *for free*, and gives you a command-line client that
 lets you do this programmatically.
+
+While LetsEncrypt *doesn't* offer wildcard certs, they do let you include
+multiple subdomains in a single certificate, and offer [very reasonable rate
+limits](https://community.letsencrypt.org/t/rate-limits-for-lets-encrypt/6769).
+
+See: [LetsEncrypt.org Getting Started Guide](https://letsencrypt.org/getting-started/).
 
 * Install `openssl`
 
@@ -82,7 +89,7 @@ Generates the certs at `/etc/letsencrypt/live/example.com/`
 `openssl dhparam -out /etc/ssl/certs/dhparam.pem 2048`
 
 
-```json
+```nginx
 server {
         root /usr/share/nginx/html;
         index index.html index.htm;
@@ -122,3 +129,6 @@ ES:!RC4:!MD5:!PSK:!aECDH:!EDH-DSS-DES-CBC3-SHA:!EDH-RSA-DES-CBC3-SHA:!KRB5-DES-C
   Node.js](https://www.npmjs.com/package/pm2)).
 * Set up logging
 * Set up monitoring
+
+--
+[Fork this post on GitHub](https://github.com/dmitrizagidulin/computingjoy.com/blob/master/posts-published/2016-05-01-nginx-letsencrypt.md)
