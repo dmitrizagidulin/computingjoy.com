@@ -61,7 +61,7 @@ Here is how you would generate a certificate (that's the `certonly` command) usi
   -d test.example.com
 ```
 
-Several of things to notice here:
+Several things to notice here:
 
 * This generates the certificates in `/etc/letsencrypt/live/example.com/` (the `live` directory actually contains symlinks to the latest generated certificates)
 * The link to the latest certs becomes relevant later, since you'll need to [renew](https://certbot.eff.org/docs/using.html#renewal) your certs every 90 days.
@@ -70,7 +70,7 @@ Several of things to notice here:
 
 **If you have an existing Nginx that you cannot stop/start: use `--webroot`**. The `--webroot` plugin allows the LetsEncrypt client to verify your domain without stopping your existing server and taking over ports 80 and 443. It does this by placing some files in a directory you specify (which, again, lets their servers know that you actually control your domain). 
 
-This route is slightly trickier (since you have to create the `--webroot-path` (or just `-w`) directory, make sure Nginx has read/write access to it, make sure that there's an entry for it in `sites-available` and so on. But if you have an existing Nginx installation, and cannot afford a moment of downtime, you don't have many other choices.
+This route is slightly trickier, since you have to create the `--webroot-path` (or just `-w`) directory, make sure Nginx has read/write access to it, make sure that there's an entry for it in `sites-available` and so on. But if you have an existing Nginx installation, and cannot afford a moment of downtime, you don't have many other choices.
 
 The general idea is the same: use the `certonly` command with the `--webroot` plugin, list the domain and subdomains you want a certificate for with the `-d` flag, and specify a webroot path directory (`-w`) which the client can use to create the `/.well-known/acme-challenge` directory it needs for verification. 
 
