@@ -31,7 +31,7 @@ Let's put that same dataset into JSON format, to make it slightly easier for dev
 
 A little better -- we can now refer to a property from a parsed row by name (say, `user.name`) instead of by index (`user[1]`).
 
-Now, imagine if we could give each of those users a *globally unique* `id`. Maybe each of them have their own domain name. Or failing that, an account on some service provider. Then we would have:
+Now, imagine if we could give each of those users a *globally unique* `id`. Maybe each of them has their own domain name. Or failing that, an account on some service provider. Then we would have:
 
 ```json
 [
@@ -131,16 +131,15 @@ Congratulations, we have just created a proper Linked Data document. And with a 
 
 So what did all of that get us? The benefits of the Linked Data approach are several.
 
-**Easier data merging and schema migration.** Mashups (combining data from heterogenous sources) become much easier, due to unique IDs and unambiguous properties. The flat graph based structure of most linked data formats (composite structures are expressed via local links, instead of nested documents) also makes merging datasets and schema migration much easier.
-
+**Easier data merging and schema migration**. Mashups (combining data from heterogenous sources) become much easier, due to unique IDs and unambiguous properties. The flat graph based structure of most linked data formats (composite structures are expressed via local links, instead of nested documents) also makes merging datasets and schema migration much easier.
 
 Data is **discoverable** (from IDs), **self-describing** and **self-documenting**.
 
-**Reuse and interop.** Unique property names (that are published on the net, well described and schema-specified) encourage interop and reuse, and help cut down on constant wheel reinventing.
+**Reuse and interop**. Unique property names (that are published on the net, well described and schema-specified) encourage interop and reuse, and help cut down on constant wheel reinventing.
 
-**Better searches.** If you embed linked data in your web pages (in JSON-LD format, or embedded in HTML attributes using the RDFa format), Google will actually parse it and use it to enhance search results. See Google's [Introduction to Structured Data ](https://developers.google.com/search/docs/guides/intro-structured-data) for further discussion.
+**Better searches**. If you embed linked data in your web pages (in JSON-LD format, or embedded in HTML attributes using the RDFa format), Google will actually parse it and use it to enhance search results. See Google's [Introduction to Structured Data ](https://developers.google.com/search/docs/guides/intro-structured-data) for further discussion.
 
-**Rich toolset/ecosystem.** By using an RDF based format, you get a lot of extra tooling and infrastructure for free (in addition to the existing JSON-based toolsets, for example).
+**Rich toolset/ecosystem**. By using an RDF based format, you get a lot of extra tooling and infrastructure for free (in addition to the existing JSON-based toolsets, for example).
 
 ## Linked Data Challenges
 
@@ -148,6 +147,6 @@ In going from something like CSV to RDF-based linked data, you've probably picke
 
 **URIs**. Giving URIs to things is not always easy.
 
-**Schema discovery**. Discovering, choosing or creating schemas (vocabularies) that fit your use case is sometimes challenging. But at least with linked data, you have the option to browse and study listings/directories of such schemas (unlike with database table schemas, for example).
+**Schema discovery**. Discovering, choosing or creating schemas (vocabularies) that fit your use case is sometimes challenging. But at least with linked data, you have the option to browse and study listings/directories of such schemas (unlike with database table schemas, for example). [Schema.org/schemas](https://schema.org/docs/schemas.html) is a good place to start.
 
 **Availability**. Linking to things on the net means you are depending on the uptime of other systems. (See also Leslie Lamport's quote, "A distributed system is one in which the failure of a computer you didn't even know existed can render your own computer unusable".) Fortunately, actually dereferencing the links of properties or IDs is not mission critical, but is more helpful during development and design phases. To put it another way, you can still use `http://www.alice.com/#about` as a good user ID even if Alice's website happens to be down during a given day -- browsing linked data is an additional benefit and possibility, instead of a core operation.
